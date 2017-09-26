@@ -1,0 +1,7 @@
+
+*~
+rootScripts/*.so
+rootScripts/*.d
+rootScripts/*.pcm
+\#*#
+
