@@ -305,7 +305,7 @@ std::vector<std::string> getPathNames(TDirectory* dir,const std::string& dirName
 
 void printNonTPDQM(const std::string& plotDir,const ValData& valData)
 {
-  std::string dir="DQMData/Run 1/HLT/Run summary/EGOffline/Source_Histos";
+  std::string dir="DQMData/Run 1/HLT/Run summary/EgOffline/Source_Histos";
   std::vector<std::string> paths={"hltEle23Ele12CaloIdLTrackIdLIsoVLTrackIsoLeg1Filter",
 				  "hltEle27WPTightGsfTrackIsoFilter",
 				  "hltEle115CaloIdVTGsfTrkIdTGsfDphiFilter",
