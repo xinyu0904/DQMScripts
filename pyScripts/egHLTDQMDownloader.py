@@ -115,10 +115,20 @@ def get_datasets_runs(dataset_pattern):
     datasets_runs = {}
     query = "dataset dataset="+dataset_pattern
     datasets,err = subprocess.Popen(["dasgoclient","--query",query],stdout=subprocess.PIPE,stderr=subprocess.PIPE).communicate()
+    if err.find("panic: failed to parse X509 proxy")==0:
+        print "no voms proxy found, you need to"
+        print "   voms-proxy-init --voms cms"
+    elif err!="":
+        print "unknown dasgoerror for query ",query
+        print err
+    
     for dataset in datasets.split("\n"):
         if dataset == '': continue
         query = "run dataset="+dataset
         runs,err = subprocess.Popen(["dasgoclient","--query",query],stdout=subprocess.PIPE,stderr=subprocess.PIPE).communicate()
+        if err!="":
+            print "unknown dasgoerror for query ",query
+            print err
         if dataset not in datasets_runs:
             datasets_runs[dataset]=[]
         for run in runs.split("\n"):
